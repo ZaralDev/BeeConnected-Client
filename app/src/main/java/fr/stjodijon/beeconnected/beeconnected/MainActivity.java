@@ -20,8 +20,7 @@ public class MainActivity extends AppCompatActivity {
 
 
     private void injectData() {
-        LinearLayout layout = findViewById(R.id.data_layout);
-        
+
 
     }
     private void doTransaction(final Fragment fragment) {

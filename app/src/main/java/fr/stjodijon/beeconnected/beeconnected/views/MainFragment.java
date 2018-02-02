@@ -1,16 +1,22 @@
 package fr.stjodijon.beeconnected.beeconnected.views;
 
+import android.graphics.Color;
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Spinner;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 
 import fr.stjodijon.beeconnected.beeconnected.R;
+import fr.stjodijon.beeconnected.beeconnected.adapter.BeeSpinnerAdapter;
 
 /**
  * Created by Utilisateur on 24/01/2018.
@@ -35,11 +41,28 @@ public class MainFragment extends Fragment {
         ArrayList<String> list = new ArrayList<>();
         list.add("Ruche 1");
         list.add("Ruche 2");
-        ArrayAdapter<String> adapter = new ArrayAdapter<String>(getContext(),
+        BeeSpinnerAdapter adapter = new BeeSpinnerAdapter(this.getContext(),
                 android.R.layout.simple_spinner_item, list);
-        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+
         spinner.setAdapter(adapter);
+        adapter.notifyDataSetChanged();
+        spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+                System.out.println("Caca");
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> adapterView) {
+
+            }
+        });
+
+
     }
 
+    private void getInfo() {
+
+    }
 
 }

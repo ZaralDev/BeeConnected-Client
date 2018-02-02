@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">BeeConnected</string>
+    <string name="common_size">20</string>
 </resources>

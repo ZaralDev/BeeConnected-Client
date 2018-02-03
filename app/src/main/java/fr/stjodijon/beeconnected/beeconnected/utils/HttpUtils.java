@@ -11,6 +11,8 @@ import java.net.URL;
 public class HttpUtils {
 
     public static String sendGet(String url) throws IOException {
+
+
         URL obj = new URL(url);
         HttpURLConnection con = (HttpURLConnection) obj.openConnection();
 
@@ -21,6 +23,9 @@ public class HttpUtils {
         con.setRequestProperty("User-Agent", "Mozilla/5.0");
 
         int responseCode = con.getResponseCode();
+        System.out.println("Sending 'GET' request to URL : " + url);
+        System.out.println("Response Code : " + responseCode);
+        System.out.println(responseCode);
         BufferedReader in = new BufferedReader(
                 new InputStreamReader(con.getInputStream()));
         String inputLine;
@@ -30,8 +35,14 @@ public class HttpUtils {
             response.append(inputLine);
         }
         in.close();
+
+        //print result
+        System.out.println("RR" + response.toString());
+
+        System.out.println(response.toString());
         return response.toString();
     }
+
 
 
     public static String sendPost(String key, String url, String parameters) throws IOException {

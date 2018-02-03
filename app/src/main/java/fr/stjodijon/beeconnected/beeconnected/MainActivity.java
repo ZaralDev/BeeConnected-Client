@@ -6,6 +6,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Window;
 
+import java.util.Properties;
+
 import fr.stjodijon.beeconnected.beeconnected.views.MainFragment;
 
 public class MainActivity extends AppCompatActivity {
@@ -14,10 +16,13 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         System.out.println("Starting app");
+        Properties systemProperties = System.getProperties();
+        systemProperties.setProperty("http.proxyHost","10.29.0.252");
+        systemProperties.setProperty("http.proxyPort","9009");
         setContentView(R.layout.activity_main);
         getSupportActionBar().setDisplayOptions(ActionBar.DISPLAY_SHOW_CUSTOM);
         getSupportActionBar().setCustomView(R.layout.abs_layout);
-        doTransaction(new MainFragment());
+        doTransaction(new MainFragment(this));
     }
 
 

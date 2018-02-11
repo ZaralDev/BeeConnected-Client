@@ -8,6 +8,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.Spinner;
 import android.widget.TextView;
 
@@ -39,6 +40,7 @@ public class MainFragment extends Fragment {
 
     private ImageView tempInc, lumInc, weightInc, humidityInc;
 
+
     public MainFragment(MainActivity main) {
         this.main = main;
     }
@@ -47,7 +49,7 @@ public class MainFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View v = inflater.inflate(layout, container, false);
 
-        Spinner spinner = v.findViewById(R.id.spinner);
+        final Spinner spinner = v.findViewById(R.id.spinner);
         tempData = v.findViewById(R.id.data_temp);
         lumData = v.findViewById(R.id.data_lum);
         weightData = v.findViewById(R.id.data_weight);
@@ -63,6 +65,38 @@ public class MainFragment extends Fragment {
         weightInc = v.findViewById(R.id.cross_weight);
         humidityInc = v.findViewById(R.id.cross_humidity);
         initSpinner(spinner);
+        v.findViewById(R.id.temp_layout).setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View view) {
+                GraphFragment fragment = new GraphFragment(main, "temp", spinner.getSelectedItemPosition()+1);
+                main.doTransaction(fragment);
+            }
+        });
+        v.findViewById(R.id.lum_layout).setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View view) {
+                GraphFragment fragment = new GraphFragment(main, "lum", spinner.getSelectedItemPosition()+1);
+                main.doTransaction(fragment);
+            }
+        });
+        v.findViewById(R.id.weight_layout).setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View view) {
+                GraphFragment fragment = new GraphFragment(main, "weight", spinner.getSelectedItemPosition()+1);
+                main.doTransaction(fragment);
+            }
+        });
+        v.findViewById(R.id.humidity_layout).setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View view) {
+                GraphFragment fragment = new GraphFragment(main, "hum", spinner.getSelectedItemPosition()+1);
+                main.doTransaction(fragment);
+            }
+        });
         return v;
     }
 
@@ -101,7 +135,6 @@ public class MainFragment extends Fragment {
                                         
                                         DataObject nearest = handler.getBefore(latestData);
                                         if (nearest != null) {
-
                                             int tempPercent = latestData.getPercentDiffTemp(nearest);
                                             boolean incTemp = tempPercent >= 0;
                                             tempStats.setText(tempPercent + "%");
@@ -121,6 +154,17 @@ public class MainFragment extends Fragment {
                                             boolean incWeight = weightPercent >= 0;
                                             weightStats.setText(weightPercent + "%");
                                             weightInc.setImageResource(incWeight ? R.drawable.ic_diagonal_arrow:  R.drawable.ic_diagonal_arrow_down );
+                                        } else {
+                                            //Default values
+                                            tempStats.setText( "-");
+                                            lumStats.setText("-");
+                                            humidityStats.setText("-");
+                                            weightStats.setText("-");
+
+                                            tempInc.setImageResource( R.drawable.ic_diagonal_arrow);
+                                            lumInc.setImageResource( R.drawable.ic_diagonal_arrow );
+                                            humidityInc.setImageResource( R.drawable.ic_diagonal_arrow);
+                                            weightInc.setImageResource(R.drawable.ic_diagonal_arrow);
 
                                         }
                                     } catch (JSONException e) {
@@ -147,6 +191,7 @@ public class MainFragment extends Fragment {
 
             }
         });
+
 
 
     }

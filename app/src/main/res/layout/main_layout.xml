@@ -21,13 +21,16 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
+
         android:background="@drawable/border"
         android:textAlignment="center" />
 
     <LinearLayout
+        android:id="@+id/lum_layout"
         android:layout_width="match_parent"
         android:layout_height="100dp"
         android:background="@drawable/border"
+        android:clickable="true"
         android:orientation="horizontal">
 
         <LinearLayout
@@ -114,11 +117,14 @@
             android:scaleY="0.3"
             android:src="@drawable/ic_next" />
     </LinearLayout>
+
     <LinearLayout
+        android:id="@+id/temp_layout"
         android:layout_width="match_parent"
         android:layout_height="100dp"
         android:background="@drawable/border"
 
+        android:clickable="true"
         android:orientation="horizontal">
 
         <LinearLayout
@@ -206,11 +212,14 @@
             android:scaleY="0.3"
             android:src="@drawable/ic_next" />
     </LinearLayout>
+
     <LinearLayout
+        android:id="@+id/weight_layout"
         android:layout_width="match_parent"
         android:layout_height="100dp"
         android:background="@drawable/border"
 
+        android:clickable="true"
         android:orientation="horizontal">
 
         <LinearLayout
@@ -298,11 +307,14 @@
             android:scaleY="0.3"
             android:src="@drawable/ic_next" />
     </LinearLayout>
+
     <LinearLayout
+        android:id="@+id/humidity_layout"
         android:layout_width="match_parent"
         android:layout_height="100dp"
         android:background="@drawable/border"
 
+        android:clickable="true"
         android:orientation="horizontal">
 
         <LinearLayout

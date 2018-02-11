@@ -31,6 +31,10 @@ public class DataHandler {
         }
     }
 
+    public ArrayList<DataObject> getDataList() {
+        return dataList;
+    }
+
     public DataObject getLatestData() {
         DataObject latest = dataList.get(0);
         if (dataList.size() >= 1) {

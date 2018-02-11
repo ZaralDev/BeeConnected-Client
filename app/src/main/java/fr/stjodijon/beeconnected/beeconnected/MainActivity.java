@@ -27,7 +27,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
-    private void doTransaction(final Fragment fragment) {
+    public void doTransaction(final Fragment fragment) {
         android.support.v4.app.FragmentTransaction fragmentTransaction = this.getSupportFragmentManager().beginTransaction();
         fragmentTransaction.replace(R.id.activity, fragment);
         fragmentTransaction.commit();

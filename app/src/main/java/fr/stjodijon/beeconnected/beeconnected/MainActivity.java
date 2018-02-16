@@ -4,6 +4,7 @@ import android.app.ActionBar;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.MenuItem;
 import android.view.Window;
 
 import java.util.Properties;
@@ -24,6 +25,17 @@ public class MainActivity extends AppCompatActivity {
         getSupportActionBar().setDisplayOptions(ActionBar.DISPLAY_SHOW_CUSTOM);
         getSupportActionBar().setCustomView(R.layout.abs_layout);
         doTransaction(new MainFragment(this));
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem menuItem) {
+        switch (menuItem.getItemId()) {
+            case android.R.id.home:
+                System.out.println("test");
+                MainFragment fragment = new MainFragment(this);
+                this.doTransaction(fragment);
+        }
+        return (super.onOptionsItemSelected(menuItem));
     }
 
 

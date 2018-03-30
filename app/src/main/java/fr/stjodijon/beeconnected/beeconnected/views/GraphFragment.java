@@ -77,7 +77,7 @@ public class GraphFragment extends Fragment {
                     final LineChart chart = (LineChart) v.findViewById(R.id.chart);
 
                     final List<Entry> entries = new ArrayList<>();
-                    final String r = HttpUtils.sendGet("http://149.91.88.38:3925/api/data?id=" + id + "&limit=0"); //0 to get all datas
+                    final String r = HttpUtils.sendGet("http://localhost:3925/api/data?id=" + id + "&limit=0"); //0 to get all datas
                     JSONObject obj = new JSONObject(r);
                     DataHandler handler = new DataHandler(obj);
                     ArrayList<DataObject> datas = handler.getDataList();

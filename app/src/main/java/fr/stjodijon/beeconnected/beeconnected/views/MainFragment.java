@@ -122,7 +122,7 @@ public class MainFragment extends Fragment {
                     @Override
                     public void run() {
                         try {
-                            final String r = HttpUtils.sendGet("http://localhost:3925/api/data?id=" + hiveId + "&limit=2");
+                            final String r = HttpUtils.sendGet("http://149.91.88.38:3925/api/data?id=" + hiveId + "&limit=2");
                             main.runOnUiThread(new Runnable() {
                                 @Override
                                 public void run() {

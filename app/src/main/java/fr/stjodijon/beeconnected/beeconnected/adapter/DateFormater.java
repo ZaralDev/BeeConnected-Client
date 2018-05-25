@@ -3,6 +3,7 @@ package fr.stjodijon.beeconnected.beeconnected.adapter;
 import com.github.mikephil.charting.components.AxisBase;
 import com.github.mikephil.charting.formatter.IAxisValueFormatter;
 
+import java.security.Timestamp;
 import java.text.SimpleDateFormat;
 import java.time.LocalDateTime;
 import java.util.Calendar;
@@ -22,10 +23,12 @@ public class DateFormater implements IAxisValueFormatter {
     @Override
     public String getFormattedValue(float value, AxisBase axis) {
         Calendar calendar = Calendar.getInstance();
-        System.out.println(value);
-        calendar.setTimeInMillis(Float.valueOf(value).longValue());
+        long lValue = Float.valueOf(value).longValue();
+        System.out.println(lValue);
+        calendar.setTimeInMillis(lValue*1000);
+        SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy HH:mm:ss");
+        System.out.println(sdf.format(calendar.getTime()));
 
-        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
         return  sdf.format(calendar.getTime());
     }
 

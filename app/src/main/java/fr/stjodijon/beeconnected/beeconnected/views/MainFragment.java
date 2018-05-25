@@ -51,6 +51,10 @@ public class MainFragment extends Fragment {
         View v = inflater.inflate(layout, container, false);
 
         getActivity().setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
+        if (main.getSupportActionBar() != null){
+            main.getSupportActionBar().setDisplayHomeAsUpEnabled(false);
+            main.getSupportActionBar().setDisplayShowHomeEnabled(false);
+        }
 
         final Spinner spinner = v.findViewById(R.id.spinner);
         tempData = v.findViewById(R.id.data_temp);
@@ -196,10 +200,6 @@ public class MainFragment extends Fragment {
         });
 
 
-
-    }
-
-    private void getInfo() {
 
     }
 
